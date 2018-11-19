@@ -40,6 +40,7 @@ class MyComponent extends Component {
     });
   }
   componentDidMount() {
+     console.log('MOUNTED');
     this.growShrink();
   }
 }
