@@ -11,7 +11,8 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "npm run pretty; webpack",
     "pretty": "prettier --single-quote --trailing-comma es5 --write \"lib/**/*.js\" \"samples/**/*.js\" \"test/**/*.js\";",
-    "serve": "webpack-dev-server --config webpack.config.js --content-base build/"
+    "serve": "webpack-dev-server --config webpack.config.js --content-base build/",
+    "multi-serve": "webpack-dev-server --config webpack-hypervisor.config.js --content-base build/"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     "webpack-dev-server": "^2.11"
   },
   "dependencies": {
+    "@syr/bus": "^1.0.0",
     "@syr/jsx": "^1.2.1"
   },
   "syr": {

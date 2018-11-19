@@ -6,26 +6,27 @@ require('./lib/fills');
 
 // core composition
 import { RasterManager } from './lib/rastermanager';
-import { Component } from './lib/component';
+import { Component } from './lib/components/component';
 
 // animations and events
-import { Animated } from './lib/animated';
+import { Animated } from './lib/components/animated';
 import { Events, EventEmitter } from './lib/events';
 
 // fillers for native platforms
 import { Networking } from './lib/networking';
 
 // syr components
-import { View } from './lib/view';
-import { StackView } from './lib/stackview';
-import { Button } from './lib/button';
-import { Text } from './lib/text';
-import { Image } from './lib/image';
-import { LinearGradient } from './lib/lineargradient';
-import { TouchableOpacity } from './lib/touchable';
-import { ScrollView } from './lib/scrollview';
-import { Alert } from './lib/alertDialogue';
-import { Switch } from './lib/switch';
+import { View } from './lib/components/view';
+import { StackView } from './lib/components/stackview';
+import { Button } from './lib/components/button';
+import { Text } from './lib/components/text';
+import { Image } from './lib/components/image';
+import { LinearGradient } from './lib/components/lineargradient';
+import { TouchableOpacity } from './lib/components/touchable';
+import { ScrollView } from './lib/components/scrollview';
+import { Alert } from './lib/components/alertDialogue';
+import { Switch } from './lib/components/switch';
+import { Frame } from './lib/components/frame';
 
 // syr environment
 import { NativeModules } from './lib/nativemodules';
@@ -37,13 +38,18 @@ import { Platform } from './lib/platform';
 import { DOMRaster } from './lib/rasters/dom';
 import { WKRaster } from './lib/rasters/wkwebview';
 import { NoDOM } from './lib/rasters/nodom';
+import { Multiplex } from './lib/rasters/multiplex';
 
 // central SyrStore (flux Store)
 import { SyrStore } from './lib/store';
 import { Resolver } from './lib/resolver';
 
+import { RasterUtils } from './lib/rasters/rasterutils';
+
 // detecting rendering bridge
-if (
+if(RasterUtils.props && RasterUtils.props.isSyrMultiplex) {
+  RasterManager.setRaster(Multiplex);
+} else if (
   typeof window !== 'undefined' &&
   (window.SyrBridge || (window.webkit && window.webkit.messageHandlers))
 ) {
@@ -82,5 +88,6 @@ export {
   Alert,
   SyrStore,
   Switch,
-  Resolver
+  Resolver,
+  Frame
 };
