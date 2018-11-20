@@ -1,3 +1,4 @@
+import { Client } from '@syr/bus';
 import { Component, Render, View, Dimensions, Animated } from '../index';
 
 const styles = {
@@ -16,6 +17,7 @@ const styles = {
 class MyComponent extends Component {
   constructor() {
     super();
+    this.client = new Client('com.derek.resizeanimation');
     this.slideAnimation = new Animated.ValueXY({ x: 0, y: 0 });
     styles.slideAnimation.transform = [this.slideAnimation];
   }
