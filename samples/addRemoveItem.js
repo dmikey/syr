@@ -7,6 +7,8 @@ import {
   Button,
 } from '../index';
 
+import { Client } from '@syr/bus';
+
 class MyView extends Component {
   render() {
     return (
@@ -46,6 +48,7 @@ function getItems(n) {
 class example extends Component {
   constructor(props) {
     super(props);
+    this.client = new Client('com.derek.example');
     this.componentCount = 0;
     this.state.components = getItems(0);
   }

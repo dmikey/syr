@@ -14,6 +14,8 @@ import {
   NativeModules,
 } from '../index';
 
+import { Client } from '@syr/bus';
+
 import { Styles } from './styles/calculator';
 
 const operations = {
@@ -34,6 +36,7 @@ const operations = {
 class SyrCalculator extends Component {
   constructor() {
     super();
+    this.client = new Client('com.derek.calculator');
     this.state.displayAreaValue = '0';
     this.state.calculations = [];
   }

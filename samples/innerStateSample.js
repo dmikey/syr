@@ -15,6 +15,8 @@ import {
   SyrNavigator,
 } from '../index';
 
+import { Client } from '@syr/bus';
+
 // currently required to pull images in to web.
 // maps with iOS
 // need a better way to handle these through the image loader
@@ -79,8 +81,7 @@ class InnerComponent extends Component {
     );
   }
   componentDidMount() {
-    console.log('setting state inner component');
-
+    console.log('setting state inner component')
     setTimeout(() => {
       this.setState({
         color: '#000000',
@@ -96,6 +97,7 @@ class MyComponent extends Component {
       styles.button.border = '0';
     }
     super();
+    this.client = new Client('com.derek.innercomponent');
     this.num = 0;
     this.spin = 0;
     this.state = {
@@ -123,11 +125,10 @@ class MyComponent extends Component {
     );
   }
   onPress() {
-    SyrNavigator.dispatch({});
-    // this.num += 1;
-    // this.setState({
-    //   buttonMessage: 'Pressed: ' + this.num,
-    // });
+    this.num += 1;
+    this.setState({
+      buttonMessage: 'Pressed: ' + this.num,
+    });
   }
   spinPiggy() {
     this.spin += 1;
@@ -146,6 +147,6 @@ class MyComponent extends Component {
   }
 }
 
-// Render(MyComponent);
+Render(MyComponent, document.getElementById('root'));
 
-export { MyComponent };
+//export { MyComponent };
