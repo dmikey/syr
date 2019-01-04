@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SyrBundleManager : NSObject
+@interface SyrBundle : NSObject
 
 @end
+
+@interface SyrBundleManager : NSObject
+@property NSString* manfestServerEndpoint;
+
+- (id) initWithServerPath:(NSString*) serverPath;
+- (SyrBundle*) loadBundle:(NSString*) bundlePath;
+
+@end
+
+
+

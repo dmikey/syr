@@ -40,7 +40,7 @@ import { NoDOM } from './lib/rasters/nodom';
 
 // central SyrStore (flux Store)
 import { SyrStore } from './lib/store';
-@TODO: This will be for the new version of syrStore
+// @TODO: This will be for the new version of syrStore
 // import { Resolver } from './lib/resolver';
 
 // detecting rendering bridge

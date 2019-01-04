@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <SyrNative/SyrNative.h>
+#import <SyrNative/SyrBundleManager.h>
 
 @interface ViewController ()
 
@@ -17,9 +18,14 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    
+  SyrBundleManager* bundleManager = [[SyrBundleManager alloc] initWithServerPath:@"https://www.tyrnodeweb18043852.qa.paypal.com/appstack"];
+  SyrBundle* mainAppBundle = [bundleManager loadBundle:@"http://localhost:8080"];
+    
+    
   
   // init rootView
-  SyrRootView* rootView = [[SyrRootView alloc] initWithBundlePath:@"" initialProperties:@{@"foo": @"baz"}];
+  SyrRootView* rootView = [[SyrRootView alloc] initWithBundlePath:@"http://localhost:8080" initialProperties:@{@"foo": @"baz"}];
   rootView.frame = self.view.frame;
   
   // attach rootView
